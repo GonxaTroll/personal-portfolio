@@ -1030,7 +1030,7 @@ function App() {
               {/* Download resume */}
               <Button
                 size="lg"
-                className="gap-2 bg-primary text-primary-foreground hover:brightness-110"
+                className="group gap-2 border border-primary/60 bg-primary text-primary-foreground shadow-[0_0_0_rgba(17,115,212,0)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_10px_28px_rgba(17,115,212,0.38)] hover:ring-2 hover:ring-primary/30 active:translate-y-0"
                 onClick={() => {
                   const link = document.createElement('a')
                   link.href = resolveAssetUrl('/CV_Gonzalo.pdf')
@@ -1038,7 +1038,7 @@ function App() {
                   link.click()
                 }}
               >
-                <Download className="h-5 w-5" />
+                <Download className="h-5 w-5 transition-transform duration-200 group-hover:translate-y-0.5" />
                 Download Resume
               </Button>
 
