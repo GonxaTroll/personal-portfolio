@@ -383,6 +383,30 @@ const certificationsByProvider: CertificationProvider[] = [
       },
     ],
   },
+  {
+    provider: 'Reinforcement Learning',
+    logo: '/reinforcement-learning.png',
+    certifications: [
+      {
+        name: 'Beginner to Master - AI in Python',
+        url: 'https://www.udemy.com/certificate/UC-fe8abba3-029a-4d99-b95b-20faf1cbc85f/',
+      },
+    ],
+  },
+  {
+    provider: 'Software Engineering',
+    logo: '/software-engineering.png',
+    certifications: [
+      {
+        name: 'Git + GitHub: Todo un sistema de control de versiones desde cero',
+        url: 'https://www.udemy.com/certificate/UC-24e96bcb-a6f7-4f2f-81f2-dc80b174b91c/',
+      },
+      {
+        name: 'Docker, de principiante a experto',
+        url: 'https://www.udemy.com/certificate/UC-f42d98e9-2f71-46ab-9a3c-d8237dbb9ef9/',
+      },
+    ],
+  },
 ]
 
 function scrollToId(id: string, onDone?: () => void) {
@@ -940,6 +964,29 @@ function App() {
                       See more →
                     </button>
                   )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="mb-8 text-center text-2xl font-bold text-white">
+              Languages
+            </h3>
+            <div className="mx-auto flex max-w-2xl flex-wrap justify-center gap-4">
+              {[
+                { language: 'Spanish', level: 'Native' },
+                { language: 'English', level: 'C2' },
+                { language: 'Chinese', level: 'HSK 2' },
+              ].map(({ language, level }) => (
+                <div
+                  key={language}
+                  className="flex min-w-40 flex-col items-center rounded-2xl border border-border bg-card px-8 py-5"
+                >
+                  <span className="text-base font-semibold text-white">
+                    {language}
+                  </span>
+                  <span className="mt-1 text-sm text-primary">{level}</span>
                 </div>
               ))}
             </div>
