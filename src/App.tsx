@@ -672,14 +672,16 @@ function App() {
 
             <div className="space-y-12">
               {displayedExperiences.map((exp, index) => (
-                <div
+                <button
+                  type="button"
                   key={exp.id}
                   data-index={index}
-                  className={`timeline-item relative flex cursor-pointer items-start gap-6 pl-20 transition-all duration-700 ${
+                  className={`timeline-item relative flex w-full cursor-pointer items-start gap-6 pl-20 text-left transition-all duration-700 ${
                     visibleItems.includes(index)
                       ? 'translate-x-0 opacity-100'
                       : '-translate-x-10 opacity-0'
                   }`}
+                  aria-label={`Open details for ${exp.title} at ${exp.company}`}
                   onMouseEnter={() => setHoveredExp(exp.id)}
                   onMouseLeave={() => setHoveredExp(null)}
                   onClick={() => setSelectedExp(exp)}
@@ -698,7 +700,7 @@ function App() {
                     />
                   </div>
 
-                  <div className="flex-1 rounded-2xl border border-border/70 bg-card/50 p-5 backdrop-blur-sm">
+                  <div className="relative flex-1 rounded-2xl border border-border/70 bg-card/50 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-primary/70 focus-visible:border-primary/70">
                     <h3 className="text-2xl font-bold text-white">
                       {exp.title}
                     </h3>
@@ -706,20 +708,45 @@ function App() {
                       {exp.company} | {exp.period}
                     </p>
 
-                    {hoveredExp === exp.id && (
-                      <div className="mt-4 flex flex-wrap gap-2 animate-in fade-in duration-300">
-                        {exp.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="rounded-full bg-primary px-3 py-1 text-sm text-white"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    <div
+                      className="pointer-events-none absolute bottom-11 right-3 flex max-w-[70%] flex-wrap justify-end gap-1.5 transition-all duration-300"
+                      style={{
+                        opacity: hoveredExp === exp.id ? 1 : 0,
+                        transform:
+                          hoveredExp === exp.id
+                            ? 'translateY(0)'
+                            : 'translateY(6px)',
+                      }}
+                    >
+                      {exp.skills.slice(0, 3).map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full border border-primary/50 bg-primary/20 px-2 py-1 text-xs text-white"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      {exp.skills.length > 3 && (
+                        <span className="rounded-full border border-primary/50 bg-primary/20 px-2 py-1 text-xs text-white">
+                          +{exp.skills.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-end gap-1 text-xs font-medium text-primary/90">
+                      <span>Click to view details</span>
+                      <ChevronRight
+                        className="h-4 w-4 transition-transform duration-300"
+                        style={{
+                          transform:
+                            hoveredExp === exp.id
+                              ? 'translateX(3px)'
+                              : 'translateX(0)',
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
 
