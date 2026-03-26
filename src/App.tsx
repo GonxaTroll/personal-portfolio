@@ -642,9 +642,10 @@ function App() {
   }, [showAllExperiences])
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
+    <div className="page-bg isolate min-h-screen text-foreground">
+      <div aria-hidden="true" className="page-glow pointer-events-none fixed inset-0 -z-10" />
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-background/75 shadow-[0_8px_32px_rgba(0,0,0,0.40)] backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
           <button
             type="button"
             className={`flex items-center gap-3 transition-all duration-300 ${
@@ -665,13 +666,13 @@ function App() {
             </span>
           </button>
 
-          <div className="hidden items-center gap-6 text-sm md:flex">
-            {['about', 'experience', 'projects', 'contributions', 'certifications'].map(
+          <div className="hidden items-center gap-1 text-sm md:flex">
+            {['experience', 'projects', 'contributions', 'certifications'].map(
               (item) => (
                 <button
                   key={item}
                   type="button"
-                  className="capitalize text-foreground transition-colors hover:text-white"
+                  className="relative rounded-md px-3 py-1.5 capitalize text-slate-400 transition-colors duration-200 hover:text-white after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-200 hover:after:scale-x-100"
                   onClick={() => scrollToId(item)}
                 >
                   {item}
@@ -687,116 +688,165 @@ function App() {
       <section
         id="about"
         ref={aboutRef}
-        className="section-glow px-4 pb-20 pt-28 sm:px-6 sm:pt-32"
+        className="section-glow px-4 pb-24 pt-28 sm:px-6 sm:pt-32"
       >
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[320px_1fr] lg:items-start lg:gap-16">
-          <div className="flex flex-col items-center">
-            <div className="mb-6 h-56 w-56 overflow-hidden rounded-full border-4 border-primary shadow-2xl sm:h-64 sm:w-64">
-              <img
-                src={resolveAssetUrl('/images/design-mode/about_me_screen.png')}
-                alt="Gonzalo Candel"
-                className="h-full w-full object-cover"
-              />
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-12 lg:grid-cols-[280px_1fr] lg:items-start lg:gap-16">
+            {/* Left: photo + name + stats */}
+            <div className="flex flex-col items-center gap-6">
+              {/* Photo frame */}
+              <div className="h-56 w-56 overflow-hidden rounded-full border-4 border-primary sm:h-64 sm:w-64">
+                <img
+                  src={resolveAssetUrl('/images/design-mode/about_me_screen.png')}
+                  alt="Gonzalo Candel"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              {/* Name + role */}
+              <div className="text-center">
+                <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  Gonzalo Candel
+                </h1>
+                <p className="mt-1.5 text-lg text-primary">
+                  Data Scientist · ML &amp; Optimization
+                </p>
+              </div>
+
+              {/* Quick stats */}
+              <div className="grid w-full grid-cols-3 gap-2">
+                <div className="rounded-xl border border-border/60 bg-card/40 p-3 text-center backdrop-blur-sm">
+                  <p className="text-xl font-bold text-white">4+</p>
+                  <p className="mt-0.5 text-[11px] text-slate-400">Yrs Exp.</p>
+                </div>
+                <div className="rounded-xl border border-border/60 bg-card/40 p-3 text-center backdrop-blur-sm">
+                  <p className="text-xl font-bold text-white">3</p>
+                  <p className="mt-0.5 text-[11px] text-slate-400">Companies</p>
+                </div>
+                <div className="rounded-xl border border-border/60 bg-card/40 p-3 text-center backdrop-blur-sm">
+                  <p className="text-xl font-bold text-white">2</p>
+                  <p className="mt-0.5 text-[11px] text-slate-400">Publications</p>
+                </div>
+              </div>
             </div>
-            <h1 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Gonzalo Candel
-            </h1>
-            <p className="mt-2 text-center text-xl text-primary sm:text-2xl">
-              Data Scientist | ML & Optimization
-            </p>
-          </div>
 
-          <div className="space-y-6 pt-2">
-            <p className="text-lg leading-relaxed">
-              Data Scientist with experience in forecasting, optimization, and
-              analytics, working across product and business teams to turn data
-              into measurable outcomes.
-            </p>
-            <p className="text-lg leading-relaxed">
-              Skilled in Python, SQL, and ML tooling, with hands-on delivery in
-              dbt/Snowflake pipelines, FastAPI services, and observability
-              systems. I enjoy building robust solutions that improve strategic
-              decision-making.
-            </p>
+            {/* Right: bio card + core stack + actions */}
+            <div className="space-y-6">
+              {/* Bio in glass card */}
+              <div className="rounded-2xl border border-border/60 bg-card/60 p-6 backdrop-blur-sm">
+                <p className="text-lg leading-relaxed text-slate-200">
+                  Data Scientist with experience in forecasting, optimization, and
+                  analytics, working across product and business teams to turn data
+                  into measurable outcomes.
+                </p>
+                <p className="mt-4 text-lg leading-relaxed text-slate-300">
+                  Skilled in Python, SQL, and ML tooling, with hands-on delivery in
+                  dbt/Snowflake pipelines, FastAPI services, and observability
+                  systems. I enjoy building robust solutions that improve strategic
+                  decision-making.
+                </p>
+              </div>
 
-            <Button
-              size="lg"
-              className="gap-2 bg-primary text-primary-foreground hover:brightness-110"
-              onClick={() => {
-                const link = document.createElement('a')
-                link.href = resolveAssetUrl('/CV_Gonzalo.pdf')
-                link.download = 'CV_Gonzalo.pdf'
-                link.click()
-              }}
-            >
-              <Download className="h-5 w-5" />
-              Download Resume
-            </Button>
+              {/* Core stack chips */}
+              <div>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary/80">
+                  Core Stack
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Python', 'SQL', 'dbt', 'Snowflake', 'Pandas', 'Scikit-learn', 'FastAPI', 'Docker', 'Tableau'].map(
+                    (skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-sm text-primary/90"
+                      >
+                        {skill}
+                      </span>
+                    ),
+                  )}
+                </div>
+              </div>
 
-            <div className="pt-2">
-              <h2 className="mb-4 text-lg font-semibold text-white">
-                Connect with me
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
-                  onClick={() =>
-                    window.open(
-                      'https://www.linkedin.com/in/gonzalo-candel-peir%C3%B3/',
-                      '_blank',
-                    )
-                  }
-                >
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 fill-current"
+              {/* Download resume */}
+              <Button
+                size="lg"
+                className="gap-2 bg-primary text-primary-foreground hover:brightness-110"
+                onClick={() => {
+                  const link = document.createElement('a')
+                  link.href = resolveAssetUrl('/CV_Gonzalo.pdf')
+                  link.download = 'CV_Gonzalo.pdf'
+                  link.click()
+                }}
+              >
+                <Download className="h-5 w-5" />
+                Download Resume
+              </Button>
+
+              {/* Connect */}
+              <div>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary/80">
+                  Connect
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
+                    onClick={() =>
+                      window.open(
+                        'https://www.linkedin.com/in/gonzalo-candel-peir%C3%B3/',
+                        '_blank',
+                      )
+                    }
                   >
-                    <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5ZM.5 8h4V23h-4V8Zm7 0h3.83v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.09V23h-4v-7.02c0-1.67-.03-3.82-2.33-3.82-2.34 0-2.7 1.82-2.7 3.7V23h-4V8Z" />
-                  </svg>
-                  LinkedIn
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
-                  onClick={() =>
-                    window.open('https://github.com/GonxaTroll', '_blank')
-                  }
-                >
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 fill-current"
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5 fill-current"
+                    >
+                      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5ZM.5 8h4V23h-4V8Zm7 0h3.83v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.09V23h-4v-7.02c0-1.67-.03-3.82-2.33-3.82-2.34 0-2.7 1.82-2.7 3.7V23h-4V8Z" />
+                    </svg>
+                    LinkedIn
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
+                    onClick={() =>
+                      window.open('https://github.com/GonxaTroll', '_blank')
+                    }
                   >
-                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.68 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19A11.1 11.1 0 0 1 12 6.1c.98 0 1.97.13 2.89.39 2.22-1.5 3.2-1.2 3.2-1.2.64 1.63.24 2.83.12 3.13.75.81 1.2 1.85 1.2 3.11 0 4.42-2.69 5.38-5.25 5.66.41.35.78 1.04.78 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                  </svg>
-                  GitHub
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
-                  onClick={() =>
-                    window.open('https://www.kaggle.com/gonxatroll', '_blank')
-                  }
-                >
-                  <span className="text-sm font-bold">K</span>
-                  Kaggle
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
-                  onClick={() => {
-                    window.location.href = 'mailto:gonzalo.canpei@gmail.com'
-                  }}
-                >
-                  <Mail className="h-5 w-5" />
-                  Email
-                </Button>
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5 fill-current"
+                    >
+                      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.68 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19A11.1 11.1 0 0 1 12 6.1c.98 0 1.97.13 2.89.39 2.22-1.5 3.2-1.2 3.2-1.2.64 1.63.24 2.83.12 3.13.75.81 1.2 1.85 1.2 3.11 0 4.42-2.69 5.38-5.25 5.66.41.35.78 1.04.78 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                    </svg>
+                    GitHub
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
+                    onClick={() =>
+                      window.open('https://www.kaggle.com/gonxatroll', '_blank')
+                    }
+                  >
+                    <span className="text-sm font-bold">K</span>
+                    Kaggle
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="gap-2 bg-secondary text-foreground hover:bg-secondary/90 hover:text-white"
+                    onClick={() => {
+                      window.location.href = 'mailto:gonzalo.canpei@gmail.com'
+                    }}
+                  >
+                    <Mail className="h-5 w-5" />
+                    Email
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
