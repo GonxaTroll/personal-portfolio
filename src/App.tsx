@@ -46,66 +46,77 @@ type Contribution = {
   image: string
   url: string
   tags: string[]
-  subItems: Array<{
+  subItems: {
     name: string
     description: string
     url: string
-  }>
+  }[]
 }
 
 type CertificationProvider = {
   provider: string
   logo: string
-  certifications: Array<{
+  certifications: {
     name: string
     url: string
-  }>
+  }[]
 }
 
 const experiences: Experience[] = [
   {
     id: 1,
     title: 'Data Scientist',
-    company: 'Tech Innovators Inc.',
-    period: '2021 - Present',
-    skills: ['Python', 'TensorFlow', 'SQL', 'AWS', 'Data Visualization'],
+    company: 'New Work SE',
+    period: 'Aug 2024 - Jan 2026',
+    skills: ['Python', 'Forecasting', 'dbt', 'Snowflake', 'Tableau'],
     description:
-      'Leading data science initiatives and developing machine learning models for predictive analytics. Key responsibilities include:',
+      'Owned forecasting and analytics initiatives for job traffic KPIs in support of business planning.',
     tasks: [
-      'Designed and deployed ML models that improved customer retention by 25%',
-      'Built automated data pipelines processing 10M+ records daily',
-      'Led a team of 3 junior data scientists on various projects',
-      'Collaborated with product teams to integrate AI features into core products',
+      'Developed ML models for KPI forecasting with <15% error and around 8% average error across KPIs.',
+      'Built a jobs data mart with dbt and Snowflake as a single source of truth for job traffic.',
+      'Delivered business insights through Python analyses and Tableau dashboards.',
     ],
   },
   {
     id: 2,
-    title: 'Machine Learning Engineer',
-    company: 'Data Dynamics Corp.',
-    period: '2019 - 2021',
-    skills: ['PyTorch', 'Docker', 'Kubernetes', 'MLOps', 'NLP'],
+    title: 'Data Scientist',
+    company: 'Solver Intelligent Analytics',
+    period: 'Sep 2022 - Jul 2024',
+    skills: ['Forecasting', 'FastAPI', 'MySQL', 'Grafana', 'Prometheus'],
     description:
-      'Developed and maintained production ML systems serving millions of users. Main achievements include:',
+      'Maintained and expanded demand forecasting solutions for retail clients and built internal data products.',
     tasks: [
-      'Implemented recommendation engine increasing user engagement by 40%',
-      'Optimized model inference reducing latency by 60%',
-      'Created CI/CD pipelines for automated model deployment',
-      'Conducted A/B tests to validate model improvements',
+      'Improved 4-year-old demand forecasting solutions, targeting 20% lower prediction error across additional sales scenarios.',
+      'Built an optimization-based automation tool that saved up to 8 hours per week of manual work.',
+      'Implemented backend services (FastAPI) and MySQL databases for two internal customer-facing applications.',
+      'Set up centralized observability with Grafana, Prometheus and Loki across four projects.',
     ],
   },
   {
     id: 3,
-    title: 'Research Assistant',
-    company: 'University of Science',
-    period: '2017 - 2019',
-    skills: ['R', 'Statistical Analysis', 'Research Design', 'Academic Writing'],
+    title: 'Data Science Intern',
+    company: 'FERMAX Holding Investment S.L.',
+    period: 'Feb 2022 - May 2022',
+    skills: ['Clustering', 'Python', 'Power BI', 'Kibana', 'Analytics'],
     description:
-      'Conducted research in machine learning and statistical modeling. Research contributions:',
+      'Applied machine learning and analytics to user segmentation, forecasting context, and anomaly detection.',
     tasks: [
-      'Published 3 papers in peer-reviewed conferences',
-      'Developed novel algorithms for time-series forecasting',
-      'Assisted in teaching undergraduate statistics courses',
-      'Collaborated on interdisciplinary research projects',
+      'Clustered 15,000+ users from Fermax Cloud Blue to guide paid subscription recommendations. Baseline for upcoming ML-based segmentation projects.',
+      'Analyzed correlations between macroeconomic variables and sales for forecasting impact assessment.',
+      'Created Kibana and Power BI dashboards, including anomaly detection for unusual access spikes, which helped identify a security breach.',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Data Science Intern',
+    company: 'ITACA - UPV',
+    period: 'Apr 2021 - Aug 2021',
+    skills: ['Data Cleaning', 'Anonymization', 'ETL', 'Process Mining', 'Healthcare Data'],
+    description:
+      'Prepared sensitive healthcare datasets for analysis and process mining use cases.',
+    tasks: [
+      'Performed anonymization, cleaning and transformation on datasets with 22,000+ patients with blood clotting disorders from La Fe Hospital.',
+      'Delivered analysis-ready data structures for statistical analysis and process mining workflows.',
     ],
   },
 ]
@@ -182,90 +193,76 @@ const projects: Project[] = [
 const contributionsDetailed: Contribution[] = [
   {
     id: 1,
-    title: 'Open Source Contributions',
+    title: 'Research Publications',
     shortDesc:
-      'Contributed to various open-source projects, enhancing functionalities and fixing bugs.',
+      'Authored work on optimization methods for automatic team formation.',
     fullDesc:
-      'Active contributor to scikit-learn, pandas, and matplotlib. Submitted 50+ pull requests including feature enhancements and bug fixes.',
+      'Published research derived from team formation optimization methods, with one paper presented at HAIS 2023 and a follow-up accepted by Neurocomputing.',
     image: '/laptop-with-code.png',
-    url: 'https://github.com/sophiachen',
-    tags: ['Python', 'Open Source', 'Git'],
+    url: 'https://github.com/GonxaTroll',
+    tags: ['Research', 'Optimization', 'Metaheuristics', 'Python'],
     subItems: [
       {
-        name: 'Scikit-learn Feature Enhancement',
+        name: 'Evolutionary Metaheuristic for Team Formation in Classrooms',
         description:
-          'Added new preprocessing functionality for handling missing data',
-        url: 'https://github.com/scikit-learn/scikit-learn/pull/12345',
+          'Follow-up publication focused on metaheuristic approaches for team formation in classrooms.',
+        url: 'https://www.sciencedirect.com/science/article/pii/S0925231225008100',
       },
       {
-        name: 'Pandas Performance Optimization',
+        name: 'Linear Programming Model for Team Formation in Classrooms',
         description:
-          'Optimized DataFrame operations reducing memory usage by 30%',
-        url: 'https://github.com/pandas-dev/pandas/pull/23456',
-      },
-      {
-        name: 'Matplotlib Visualization Bug Fix',
-        description: 'Fixed rendering issues in 3D plots for large datasets',
-        url: 'https://github.com/matplotlib/matplotlib/pull/34567',
+          'Paper based on exact optimization methods for team formation in classrooms.',
+        url: 'https://link.springer.com/chapter/10.1007/978-3-031-40725-3_34',
       },
     ],
   },
   {
     id: 2,
-    title: 'Community Engagement',
+    title: 'Monitoring and Reliability',
     shortDesc:
-      'Active participant in data science communities, providing mentorship and sharing knowledge.',
+      'Designed centralized observability for production data projects.',
     fullDesc:
-      'Mentored 20+ aspiring data scientists through online communities, hosted monthly meetups, and organized hackathons with 200+ participants.',
+      'Implemented end-to-end monitoring infrastructure with Grafana, Prometheus, and Loki to speed up issue detection and improve system reliability.',
     image: '/community-building-icon.jpg',
-    url: 'https://www.meetup.com/data-science-community',
-    tags: ['Mentorship', 'Community Building', 'Public Speaking'],
+    url: 'https://github.com/GonxaTroll',
+    tags: ['Grafana', 'Prometheus', 'Loki', 'Observability'],
     subItems: [
       {
-        name: 'Monthly Data Science Meetup',
-        description: 'Organized and hosted monthly meetups with 50+ attendees',
-        url: 'https://www.meetup.com/data-science-community',
-      },
-      {
-        name: 'Online Mentorship Program',
+        name: 'Centralized Logging and Metrics',
         description:
-          'Mentored 20+ aspiring data scientists through career transitions',
-        url: 'https://www.mentorship.com/sophiachen',
+          'Connected logs and metrics from four projects into a shared monitoring stack.',
+        url: 'https://github.com/GonxaTroll',
       },
       {
-        name: 'Annual Data Hackathon',
-        description: 'Organized hackathon with 200+ participants and $10K in prizes',
-        url: 'https://www.datahackathon.com',
+        name: 'Operational Dashboards',
+        description:
+          'Created dashboards and alerts to shorten time-to-detection for production issues.',
+        url: 'https://github.com/GonxaTroll',
       },
     ],
   },
   {
     id: 3,
-    title: 'Research Publications',
+    title: 'Data Products and Automation',
     shortDesc:
-      'Authored and co-authored research papers in peer-reviewed journals and conferences.',
+      'Delivered practical tooling that reduced manual effort and supported commercial teams.',
     fullDesc:
-      'Published 8 papers in top-tier conferences including NeurIPS and ICML, focusing on novel approaches to time-series forecasting and anomaly detection.',
+      'Built internal applications, APIs, and automation tools that improved decision-making and removed repetitive operations in data workflows.',
     image: '/plant-and-open-book.jpg',
-    url: 'https://scholar.google.com/citations?user=sophiachen',
-    tags: ['Research', 'Academic Writing', 'Machine Learning'],
+    url: 'https://github.com/GonxaTroll',
+    tags: ['FastAPI', 'MySQL', 'Optimization', 'Automation'],
     subItems: [
       {
-        name: 'NeurIPS 2023: Novel Time-Series Forecasting',
+        name: 'Task Automation Tool',
         description:
-          'Introduced a new architecture for multi-variate time-series prediction',
-        url: 'https://papers.nips.cc/paper/2023/sophiachen',
+          'Optimization-based workflow automation that saved up to 8 hours per week.',
+        url: 'https://github.com/GonxaTroll',
       },
       {
-        name: 'ICML 2022: Anomaly Detection in Streaming Data',
+        name: 'Customer-facing Internal Apps',
         description:
-          'Developed real-time anomaly detection algorithm with 99% accuracy',
-        url: 'https://icml.cc/2022/sophiachen',
-      },
-      {
-        name: 'KDD 2021: Deep Learning for Healthcare',
-        description: 'Applied deep learning to predict patient outcomes',
-        url: 'https://kdd.org/2021/sophiachen',
+          'Implemented backend and data layer for applications used by 20+ retail professionals.',
+        url: 'https://github.com/GonxaTroll',
       },
     ],
   },
@@ -369,78 +366,20 @@ const contributionsDetailed: Contribution[] = [
 
 const certificationsByProvider: CertificationProvider[] = [
   {
-    provider: 'Google',
-    logo: '/partners/google-cloud.png',
-    certifications: [
-      {
-        name: 'Google Cloud Professional Data Engineer',
-        url: 'https://cloud.google.com/certification/data-engineer',
-      },
-      {
-        name: 'Google Cloud Professional Machine Learning Engineer',
-        url: 'https://cloud.google.com/certification/machine-learning-engineer',
-      },
-    ],
-  },
-  {
-    provider: 'Amazon Web Services',
-    logo: '/aws-certification-logo.png',
-    certifications: [
-      {
-        name: 'AWS Certified Machine Learning - Specialty',
-        url: 'https://aws.amazon.com/certification/certified-machine-learning-specialty/',
-      },
-      {
-        name: 'AWS Certified Data Analytics - Specialty',
-        url: 'https://aws.amazon.com/certification/certified-data-analytics-specialty/',
-      },
-    ],
-  },
-  {
     provider: 'Microsoft',
     logo: '/microsoft-azure-logo.png',
     certifications: [
       {
-        name: 'Azure Data Scientist Associate',
-        url: 'https://learn.microsoft.com/en-us/certifications/azure-data-scientist/',
+        name: 'DP-100',
+        url: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/',
       },
       {
-        name: 'Azure AI Engineer Associate',
-        url: 'https://learn.microsoft.com/en-us/certifications/azure-ai-engineer/',
-      },
-    ],
-  },
-  {
-    provider: 'TensorFlow',
-    logo: '/tensorflow-logo.png',
-    certifications: [
-      {
-        name: 'TensorFlow Developer Certificate',
-        url: 'https://www.tensorflow.org/certificate',
-      },
-    ],
-  },
-  {
-    provider: 'Coursera',
-    logo: '/coursera-logo.png',
-    certifications: [
-      {
-        name: 'Deep Learning Specialization',
-        url: 'https://www.coursera.org/specializations/deep-learning',
+        name: 'AI-900',
+        url: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/',
       },
       {
-        name: 'Machine Learning Specialization',
-        url: 'https://www.coursera.org/specializations/machine-learning-introduction',
-      },
-    ],
-  },
-  {
-    provider: 'Tableau',
-    logo: '/tableau-logo.png',
-    certifications: [
-      {
-        name: 'Tableau Desktop Specialist',
-        url: 'https://www.tableau.com/learn/certification/desktop-specialist',
+        name: 'PL-900',
+        url: 'https://learn.microsoft.com/en-us/credentials/certifications/power-platform-fundamentals/',
       },
     ],
   },
@@ -584,20 +523,21 @@ function App() {
               Gonzalo Candel
             </h1>
             <p className="mt-2 text-center text-xl text-primary sm:text-2xl">
-              Data Scientist
+              Data Scientist | ML & Optimization
             </p>
           </div>
 
           <div className="space-y-6 pt-2">
             <p className="text-lg leading-relaxed">
-              I&apos;m a data scientist with a passion for uncovering insights from
-              complex datasets. My expertise lies in machine learning,
-              statistical modeling, and data visualization.
+              Data Scientist with experience in forecasting, optimization, and
+              analytics, working across product and business teams to turn data
+              into measurable outcomes.
             </p>
             <p className="text-lg leading-relaxed">
-              I thrive on solving challenging problems and transforming data
-              into actionable strategies. Let&apos;s connect and explore how we can
-              collaborate on innovative projects.
+              Skilled in Python, SQL, and ML tooling, with hands-on delivery in
+              dbt/Snowflake pipelines, FastAPI services, and observability
+              systems. I enjoy building robust solutions that improve strategic
+              decision-making.
             </p>
 
             <Button
@@ -605,8 +545,8 @@ function App() {
               className="gap-2 bg-primary text-primary-foreground hover:brightness-110"
               onClick={() => {
                 const link = document.createElement('a')
-                link.href = '/resume.pdf'
-                link.download = 'Sophia_Chen_Resume.pdf'
+                link.href = '/CV_Gonzalo.pdf'
+                link.download = 'CV_Gonzalo.pdf'
                 link.click()
               }}
             >
@@ -1009,7 +949,7 @@ function App() {
 
       <footer className="border-t border-border px-4 py-12 sm:px-6">
         <div className="mx-auto max-w-6xl text-center">
-          <p>© 2025 Sophia Chen. All rights reserved.</p>
+          <p>© 2026 Gonzalo Candel. All rights reserved.</p>
         </div>
       </footer>
 
