@@ -386,6 +386,16 @@ type KirbySprite = {
 
 const KIRBY_GIF = 'https://media.tenor.com/JMcX2m_W3owAAAAj/kirby-dancing.gif'
 
+function SectionHeader({ label, title, description }: { label: string; title: string; description: string }) {
+  return (
+    <div className="mb-16 text-center">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary/90">{label}</p>
+      <h2 className="text-4xl font-bold text-white sm:text-5xl">{title}</h2>
+      <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-300">{description}</p>
+    </div>
+  )
+}
+
 function App() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null)
   const [selectedExp, setSelectedExp] = useState<Experience | null>(null)
@@ -1066,18 +1076,11 @@ function App() {
 
       <section id="experience" className="experience-shell px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary/90">
-              Professional Experience
-            </p>
-            <h2 className="text-4xl font-bold text-white sm:text-5xl">
-              Career Timeline
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-300 sm:text-xl">
-              Key roles where I built production-ready data products,
-              forecasting systems, and decision intelligence.
-            </p>
-          </div>
+          <SectionHeader
+            label="Professional Experience"
+            title="Career Timeline"
+            description="Key roles where I built production-ready data products, forecasting systems, and decision intelligence."
+          />
 
           <div className="relative" ref={experienceTimelineRef}>
             <div className="timeline-line absolute bottom-0 left-6 top-0 w-px md:left-1/2 md:-translate-x-1/2" />
@@ -1269,18 +1272,11 @@ function App() {
 
       <section id="projects" className="px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary/90">
-              Selected Work
-            </p>
-            <h2 className="text-4xl font-bold text-white sm:text-5xl">
-              Projects
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-300">
-              A selection of data science projects spanning forecasting,
-              NLP, segmentation, and decision intelligence.
-            </p>
-          </div>
+          <SectionHeader
+            label="Selected Work"
+            title="Projects"
+            description="A selection of data science projects spanning forecasting, NLP, segmentation, and decision intelligence."
+          />
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {displayedProjects.map((project) => (
@@ -1336,17 +1332,11 @@ function App() {
 
       <section id="contributions" className="px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary/90">
-              Beyond the Job
-            </p>
-            <h2 className="text-4xl font-bold text-white sm:text-5xl">
-              Contributions
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-300">
-              Research, tooling, and work that extends beyond day-to-day responsibilities.
-            </p>
-          </div>
+          <SectionHeader
+            label="Beyond the Job"
+            title="Contributions"
+            description="Research, tooling, and work that extends beyond day-to-day responsibilities."
+          />
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {displayedContributions.map((contribution) => (
@@ -1408,18 +1398,11 @@ function App() {
 
       <section id="certifications" className="px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary/90">
-              Credentials
-            </p>
-            <h2 className="text-4xl font-bold text-white sm:text-5xl">
-              Certifications
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-300">
-              Professional certifications demonstrating expertise across
-              various data science platforms and technologies.
-            </p>
-          </div>
+          <SectionHeader
+            label="Credentials"
+            title="Certifications"
+            description="Professional certifications demonstrating expertise across various data science platforms and technologies."
+          />
 
           <div className="relative px-8">
             <button
