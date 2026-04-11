@@ -390,8 +390,7 @@ function App() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null)
   const [selectedExp, setSelectedExp] = useState<Experience | null>(null)
   const [visibleItems, setVisibleItems] = useState<number[]>([])
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const [hoveredContribution, setHoveredContribution] = useState<number | null>(null)
+
   const [selectedContribution, setSelectedContribution] =
     useState<Contribution | null>(null)
   const [hoveredSubItem, setHoveredSubItem] = useState<number | null>(null)
@@ -1288,8 +1287,6 @@ function App() {
               <article
                 key={project.id}
                 className="group relative h-80 cursor-pointer overflow-hidden rounded-2xl border border-border/60 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(17,115,212,0.18)]"
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
                 onClick={() => window.open(project.url, '_blank')}
               >
                 {/* Image with scale on hover */}
@@ -1356,8 +1353,6 @@ function App() {
               <article
                 key={contribution.id}
                 className="group relative h-80 cursor-pointer overflow-hidden rounded-2xl border border-border/60 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(17,115,212,0.18)]"
-                onMouseEnter={() => setHoveredContribution(contribution.id)}
-                onMouseLeave={() => setHoveredContribution(null)}
                 onClick={() => {
                   if (contribution.id === 5) {
                     setShowCompetitionsDialog(true)
